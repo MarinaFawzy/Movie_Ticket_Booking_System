@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Movie_Ticket_Booking_System.Models.FrontEndOfficer>
+
+@{
+    ViewBag.Title = "FrontEndOffice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>FrontEndOffice</h2>
+<style>
+    body {
+        background: #00C9FF;
+        background: -webkit-linear-gradient(to right, #92FE9D, #00C9FF);
+        background: -webkit-gradient(linear, left top, right top, from(#92FE9D), to(#00C9FF));
+        background: -webkit-linear-gradient(left, #92FE9D, #00C9FF);
+        background: -o-linear-gradient(left, #92FE9D, #00C9FF);
+        background: linear-gradient(to right, #92FE9D, #00C9FF);
+    }
+</style>
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                Seat Number
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayWay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Coupon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BookingNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createdOn)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.seatRow)
+        </td>
+        <td>
+            @if (item.PayWay == "1")
+            {
+                <p> Credit</p>
+            }
+            else
+            {
+                <p> Cash</p>
+            }
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.Coupon)
+        </th>
+        <td>
+            @Html.DisplayFor(modelItem => item.BookingNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdOn)
+        </td>
+        <td>
+            @Html.HiddenFor(modelItem => item.Id)
+            @Html.ActionLink("Book", "Book", new { id = item.Id })
+        </td>
+        <td>
+            @Html.ActionLink("Cancel", "CancelSeat", new { id = item.Id })
+        </td>
+    </tr>
+
+        }
+
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            @Html.HiddenFor(modelItem => Model.ElementAt(i).Id)
+            @Html.HiddenFor(modelItem => Model.ElementAt(i).isReserved)
+            @Html.HiddenFor(modelItem => Model.ElementAt(i).UserId)
+            @Html.HiddenFor(modelItem => Model.ElementAt(i).user.UserName)
+            @Html.HiddenFor(modelItem => Model.ElementAt(i).seatRow)
+            @Html.HiddenFor(modelItem => Model.ElementAt(i).PayWay)
+            @Html.HiddenFor(modelItem => Model.ElementAt(i).Coupon)
+            @Html.HiddenFor(modelItem => Model.ElementAt(i).ShowId)
+        }
+
+    </table>
+}
