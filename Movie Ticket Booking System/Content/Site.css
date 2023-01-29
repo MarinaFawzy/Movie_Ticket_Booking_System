@@ -1,0 +1,39 @@
+﻿body {
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+body {
+    background: #00C9FF;
+    background: -webkit-linear-gradient(to right, #92FE9D, #00C9FF);
+    background: -webkit-gradient(linear, left top, right top, from(#92FE9D), to(#00C9FF));
+    background: -webkit-linear-gradient(left, #92FE9D, #00C9FF);
+    background: -o-linear-gradient(left, #92FE9D, #00C9FF);
+    background: linear-gradient(to right, #92FE9D, #00C9FF);
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.logo-size {
+    width: 194px;
+    height: 143px;
+    margin-top: -59px;
+}
